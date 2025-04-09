@@ -110,6 +110,19 @@ class BaseRepository implements EloquentRepositoryInterface
     ): ?Collection {
         return $this->model->select($columns)->with($relations)->where($paramsAnddData)->get();
     }
+    /**
+     * Find model by columns.
+     *
+     * @param  array  $modelId
+     * @param  array  $appends
+     */
+    public function getCountByColumn(
+        array $paramsAnddData,
+        array $columns = ['*'],
+        array $relations = []
+    ): ?int {
+        return $this->model->select($columns)->with($relations)->where($paramsAnddData)->count();
+    }
 
     /**
      * Find model by existsByColumn.
@@ -213,7 +226,7 @@ class BaseRepository implements EloquentRepositoryInterface
     /**
      * @param int $modelId
      * @param array $payload
-     * 
+     *
      * @return bool
      */
     public function updateWithTrashed(int $modelId, array $payload): bool
@@ -286,5 +299,4 @@ class BaseRepository implements EloquentRepositoryInterface
 
         return $query->paginate($filters['rowPerPage'])->appends($filters);
     }
-  
 }

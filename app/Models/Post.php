@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -30,7 +31,8 @@ class Post extends Model
      */
     public function getFeaturedImageUrlAttribute()
     {
-        return $this->featured_image ? asset('storage/' . $this->featured_image) : null;
+        return Storage::url($this->featured_image);
+        // return $this->featured_image ? asset('storage/' . $this->featured_image) : null;
     }
 
     /**
@@ -69,11 +71,19 @@ class Post extends Model
     {
         $query->when($filters['searchParam'] ?? null, function ($query, $search) {
             $query->where(function ($query) use ($search) {
-                $query->where('order_number', 'like', '%' . $search . '%');
+                $query->where('title', 'like', '%' . $search . '%');
+                $query->orWhere('content', 'like', '%' . $search . '%');
             });
         });
-        if (isset($filters['status'])) {
-            $query->where('status', $filters['status']);
+        if (isset($filters['category'])) {
+            $query->whereHas('category', function ($query) use ($filters) {
+                $query->where('slug', $filters['category']);
+            });
+        }
+        if (isset($filters['writer']) && $filters['writer']) {
+            $query->whereHas('user', function ($query) use ($filters) {
+                $query->where('id', $filters['writer']);
+            });
         }
     }
 }

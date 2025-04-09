@@ -67,9 +67,12 @@ export default function Index({ categories, filters }: any) {
 
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            <p>Welcome to the Categories section! Here you can manage all the categories for blogs. Use the table below to view, edit, or delete existing categories, or create a new one using the "Create Category" button.</p>
+                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg p-2">
+                        <div className="p-4 text-gray-900">
+                            <h1 className="text-2xl font-bold">Manage All Categories</h1>
+                            <p className="mt-2 text-gray-700">
+                                Create, edit, and delete categories to organize all blog posts effectively.
+                            </p>
                         </div>
                         <MasterTable
                             tableColumns={tableColumns}

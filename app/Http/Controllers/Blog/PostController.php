@@ -24,15 +24,16 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $filters = $request->all('searchParam', 'sortBy', 'sortDirection', 'rowPerPage', 'page');
+        $filters = $request->all('searchParam', 'sortBy', 'sortDirection', 'rowPerPage', 'page', 'category');
         $filters['sortBy'] = $filters['sortBy'] ?? 'id';
         $filters['sortDirection'] = $filters['sortDirection'] ?? 'desc';
-        $filters['rowPerPage'] = $filters['rowPerPage'] ?? 10;
+        $filters['rowPerPage'] = $filters['rowPerPage'] ?? 1;
+        $filters['category'] = $filters['category'] ?? null;
         $filters['writer'] = false;
         return Inertia::render('Blog/Home/Index', [
             'posts' => $this->postInterface->filter($filters, ['category']),
             'filters' => $filters,
-            'categories' => $this->categoryInterface->getByColumn([], ['slug as value', 'name as label']),
+            'categories' => $this->categoryInterface->all(),
         ]);
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Blog\CategoryController;
+use App\Http\Controllers\Blog\DashboardController;
 use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -12,9 +13,7 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 Route::middleware('auth')->group(
     function () {
         // Dashboard
-        Route::get('/dashboard', function () {
-            return Inertia::render('Dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         // Categories
         Route::prefix('categories')->name('categories.')->controller(CategoryController::class)->group(function () {
             Route::get('/', 'index')->name('index');

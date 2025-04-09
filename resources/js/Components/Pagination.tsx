@@ -2,26 +2,18 @@ import React from "react";
 import classNames from "classnames";
 import { Link } from "@inertiajs/react";
 
-const PageLink = ({
-    active,
-    label,
-    url,
-}: {
-    active: any;
-    label: string;
-    url: string;
-}) => {
+const PageLink = ({ active, label, url }: { active: any; label: string; url: string }) => {
     const className = classNames(
         [
             "mr-1 mb-1",
             "px-4 py-3",
             "border border-solid border-gray-300 rounded",
             "text-sm",
-            "hover:bg-white",
+            "hover:bg-primary/30",
             "focus:outline-none focus:border-indigo-700 focus:text-indigo-700",
         ],
         {
-            "bg-white": active,
+            "bg-primary": active,
         }
     );
     return (

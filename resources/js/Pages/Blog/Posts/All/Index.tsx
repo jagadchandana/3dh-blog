@@ -5,7 +5,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import { Head } from "@inertiajs/react";
 
-export default function Index({posts, filters}:any) {
+export default function Index({ posts, filters }: any) {
     const tableColumns = [
         {
             label: "",
@@ -67,9 +67,12 @@ export default function Index({posts, filters}:any) {
 
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            <p>Welcome to the Blog Posts section! Here you can manage all the blog posts. Use the table below to view, edit, or delete existing posts, or create a new one using the "Create Post" button.</p>
+                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg p-2">
+                        <div className="p-4 text-gray-900">
+                            <h1 className="text-2xl font-bold">Manage Your Posts</h1>
+                            <p className="mt-2 text-gray-700">
+                                Create, edit, and delete blog posts to keep your content up-to-date.
+                            </p>
                         </div>
                         <MasterTable
                             tableColumns={tableColumns}

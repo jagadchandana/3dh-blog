@@ -21,6 +21,16 @@ interface EloquentRepositoryInterface
      * @param  array  $relations  [required relations]
      */
     public function limit(int $limit, array $columns = ['*'], array $relations = []): Collection;
+    /**
+     * @param array $paramsAndData
+     *
+     * @return int
+     */
+    public function getCountByColumn(
+        array $paramsAndData,
+        array $columns = ['*'],
+        array $relations = []
+    ): ?int;
 
     /**
      * Method paginate
