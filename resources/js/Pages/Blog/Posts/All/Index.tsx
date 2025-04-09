@@ -24,6 +24,11 @@ export default function Index({posts, filters}:any) {
             sortable: false,
         },
         {
+            label: "Featured Image",
+            sortField: "featured_image",
+            sortable: false,
+        },
+        {
             label: "Slug",
             sortField: "slug",
             sortable: true,
@@ -74,14 +79,14 @@ export default function Index({posts, filters}:any) {
                             filters={filters}
                             links={posts?.meta?.links}
                         >
-                            {posts?.data?.map((category: any) => (
+                            {posts?.data?.map((post: any) => (
                                 <TableBody
                                     buttons={
                                         <>
                                             <PrimaryLink
                                                 className="!py-2"
                                                 href={route("posts.edit", {
-                                                    id: category.id
+                                                    slug: post.slug
                                                 })}
                                             >
                                                 <PencilIcon className="w-5 h-5 mr-4" />
@@ -90,19 +95,28 @@ export default function Index({posts, filters}:any) {
                                             <ConfirmButton
                                                 className="!py-2"
                                                 url={route("posts.destroy", {
-                                                    id: category.id
+                                                    slug: post.slug
                                                 })}
                                                 label="Delete"
                                             />
                                         </>
 
                                     }
-                                    key={category.id}
+                                    key={post.id}
                                 >
-                                    <TableTd>{category.id}</TableTd>
-                                    <TableTd>{category.name}</TableTd>
-                                    <TableTd>{category.slug}</TableTd>
-                                    <TableTd>{category.created_at_human}</TableTd>
+                                    <TableTd>{post.id}</TableTd>
+                                    <TableTd>{post.title}</TableTd>
+                                    <TableTd>
+                                        <div className="">
+                                            <img
+                                                src={post?.featured_image_url}
+                                                className="w-10 h-10 rounded-full"
+                                            />
+                                        </div>
+                                    </TableTd>
+                                    <TableTd>{post.slug}</TableTd>
+                                    <TableTd>{post.category.name}</TableTd>
+                                    <TableTd>{post.created_at_human}</TableTd>
 
                                 </TableBody>
                             ))}

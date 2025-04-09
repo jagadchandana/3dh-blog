@@ -14,6 +14,24 @@ class Post extends Model
         'category_id',
         'user_id',
     ];
+    protected $appends = [
+        'created_at_human',
+        'featured_image_url'
+    ];
+    /**
+     * @return [type]
+     */
+    public function getCreatedAtHumanAttribute()
+    {
+        return $this->created_at ? $this->created_at->format('Y-m-d H:i') : null;
+    }
+    /**
+     * @return [type]
+     */
+    public function getFeaturedImageUrlAttribute()
+    {
+        return $this->featured_image ? asset('storage/' . $this->featured_image) : null;
+    }
 
     /**
      * @return [type]

@@ -28,6 +28,8 @@
     "dependencies": {
         "@heroicons/react": "^2.2.0",
         "classnames": "^2.5.1",
+        "react-dropzone": "^14.3.8",
+        "react-select": "^5.10.1",
         "react-usestateref": "^1.0.9",
         "use-debounce": "^10.0.4"
     }
