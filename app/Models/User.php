@@ -45,4 +45,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    /**
+     * @param mixed $permission
+     *
+     * @return bool
+     */
+    public function hasPermission($role): bool
+    {
+        return $this->role === $role;
+    }
 }
