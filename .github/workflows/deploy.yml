@@ -67,11 +67,11 @@ jobs:
       - name: Deploy to Server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.3
         with:
-          server: ftp.corelogic.clouder
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ftp.corelogic.cloud
+          username: blog-jagad@3dh.blog.corelogic.cloud
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /3dh.blog.corelogic.cloud/
-          timeout: 600
+          timeout: 800
 
 # name: Continuous Integration and Deployment
 
