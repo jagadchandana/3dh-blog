@@ -201,7 +201,7 @@ jobs:
       - name: Install Composer Dependencies
         run: |
           composer install --no-interaction --prefer-dist --optimize-autoloader
-          tar -czvf vendor.tar.gz vendor/
+        # tar -czvf vendor.tar.gz vendor/
 
       - name: Generate APP_KEY if missing
         run: |
@@ -278,4 +278,4 @@ jobs:
             **/tests/**
             **/public/build/**
             **/resources/js/**
-            **/vendor/**
+# **/vendor/**
