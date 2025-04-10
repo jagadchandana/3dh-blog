@@ -62,8 +62,8 @@ jobs:
       #     path: public/
       - name: Debug Server Connectivity
         run: |
-          ping -c 4 ${{ secrets.FTP_SERVER }}
-          telnet ${{ secrets.FTP_SERVER }} 21
+          ping -c 4 ftp.corelogic.cloud
+          telnet ftp.corelogic.cloud 21
       - name: Deploy to Server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
