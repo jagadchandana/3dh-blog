@@ -12,7 +12,7 @@ export default function Index({ posts, filters, categories }:any) {
     const [searchParam, setSearchParam, searchParamRef] = useStateRef(filters.searchParam ?? "");
     const [filterCategory, setFilterCategory, filterCategoryRef] = useStateRef(filters.category ?? "");
     const [page, setPage] = useState(filters.page ?? 1);
-    const [rowPerPage, setRowPerPage] = useState(filters.perPage ?? 1);
+    const [rowPerPage, setRowPerPage] = useState(filters.perPage ?? 5);
     const [sortBy, setSortBy] = useState(filters.sortBy ?? "name");
     const [sortDirection, setSortDirection] = useState(
         filters.sortDirection ?? "desc"
@@ -72,14 +72,14 @@ export default function Index({ posts, filters, categories }:any) {
 
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg p-2">
+                    <div className="p-2 overflow-hidden bg-white shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
                             <h1 className="text-2xl font-bold">Blog</h1>
                             <p className="mt-2 text-gray-600">
                                 Welcome to our blog! Explore insightful articles, tips, and stories to inspire and inform your journey.
                             </p>
                         </div>
-                        <div className="px-6">
+                        <div className="px-6 ">
                             <div>
                                 <h2 className="text-lg font-semibold">Search</h2>
                                 <SearchInput
@@ -94,12 +94,25 @@ export default function Index({ posts, filters, categories }:any) {
                                         debouncedHandleSearch(e.target.value)
                                     } />
                             </div>
+                            <div className="pt-3">
+
                             <h2 className="text-lg font-semibold">Categories</h2>
-                            <div className="mt-4 flex flex-wrap gap-2">
-                                {categories.map((category: { id: any; slug: any; name:any;}) => (
+                            </div>
+                            <div className="flex flex-wrap gap-2 mt-4">
+                                <button
+                                    className={`px-4 py-2 text-sm font-medium rounded hover:bg-blue-600 hover:text-white border ${filterCategoryRef.current === "" ? 'bg-blue-700 text-white' : 'text-black border-black'}`}
+                                    onClick={() => {
+                                        setFilterCategory("");
+                                        setPage(1);
+                                        revisitPage();
+                                    }}
+                                >
+                                    All
+                                </button>
+                                {categories.map((category: { id: any; slug: any; name: any; }) => (
                                     <button
                                         key={category.id}
-                                        className={`px-4 py-2 text-sm font-medium   rounded hover:bg-blue-600 hover:text-white border   ${category.slug === filterCategoryRef.current ? 'bg-blue-700 text-white' : 'text-black border-black'}`}
+                                        className={`px-4 py-2 text-sm font-medium rounded hover:bg-blue-600 hover:text-white border ${category.slug === filterCategoryRef.current ? 'bg-blue-700 text-white' : 'text-black border-black'}`}
                                         onClick={() => {
                                             setFilterCategory(category.slug);
                                             setPage(1);

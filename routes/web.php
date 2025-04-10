@@ -11,7 +11,7 @@ use Inertia\Inertia;
 Route::prefix('/')->controller(PostController::class)->group(
     function () {
         Route::get('/',  'index')->name('home');
-        Route::get('/{slug}',  'show')->name('home.show');
+        Route::get('/{slug}/blog',  'show')->name('home.show');
 
     });
 

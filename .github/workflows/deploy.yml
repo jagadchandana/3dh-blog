@@ -72,7 +72,7 @@ name: Continuous Integration and Deployment
 
 on:
   push:
-    branches: "dev"
+    branches: "main"
 
 jobs:
   laravel-tests:

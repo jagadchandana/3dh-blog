@@ -8,7 +8,7 @@ export default function Index({ post }: any) {
         <AuthenticatedLayout
             header={
                 <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Dashboard
+                    Post
                 </h2>
             }
         >
@@ -23,25 +23,25 @@ export default function Index({ post }: any) {
                             <main className="container mx-auto mt-8">
                                 <div className="flex flex-wrap justify-between">
                                     {/* Blog Content */}
-                                    <div className="w-full md:w-8/12 px-4 mb-8">
+                                    <div className="w-full px-4 mb-8 md:w-8/12">
                                         <img
                                             src={post.featured_image_url}
                                             alt="Featured"
-                                            className="w-full h-64 object-cover rounded"
+                                            className="object-cover w-full h-64 rounded"
                                         />
-                                        <h2 className="text-4xl font-bold mt-4 mb-2">{post.title}</h2>
-                                        <p className="text-gray-700 mb-4">{post.content}</p>
+                                        <h2 className="mt-4 mb-2 text-4xl font-bold">{post.title}</h2>
+                                        <p className="mb-4 text-gray-700">{post.content}</p>
                                         <p className="text-sm text-gray-500">By: {post.user.name}</p>
-                                        {user?.id == post.id && <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                        {user?.id == post.id && <button className="px-4 py-2 mt-4 text-white bg-blue-500 rounded hover:bg-blue-600">
                                             Edit
                                         </button>}
                                     </div>
 
                                     {/* Sidebar */}
-                                    <div className="w-full md:w-4/12 px-4 mb-8">
-                                        <div className="bg-gray-100 px-4 py-6 rounded">
-                                            <h3 className="text-lg font-bold mb-2">Category</h3>
-                                            <ul className="list-disc list-inside space-y-1">
+                                    <div className="w-full px-4 mb-8 md:w-4/12">
+                                        <div className="px-4 py-6 bg-gray-100 rounded">
+                                            <h3 className="mb-2 text-lg font-bold">Category</h3>
+                                            <ul className="space-y-1 list-disc list-inside">
                                                 <li><a href="#" className="text-gray-700 hover:text-gray-900">{post.category.name}</a></li>
                                             </ul>
                                         </div>

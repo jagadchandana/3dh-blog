@@ -27,11 +27,11 @@ class PostController extends Controller
         $filters = $request->all('searchParam', 'sortBy', 'sortDirection', 'rowPerPage', 'page', 'category');
         $filters['sortBy'] = $filters['sortBy'] ?? 'id';
         $filters['sortDirection'] = $filters['sortDirection'] ?? 'desc';
-        $filters['rowPerPage'] = $filters['rowPerPage'] ?? 1;
+        $filters['rowPerPage'] = $filters['rowPerPage'] ?? 5;
         $filters['category'] = $filters['category'] ?? null;
         $filters['writer'] = false;
         return Inertia::render('Blog/Home/All/Index', [
-            'posts' => $this->postInterface->filter($filters, ['category']),
+            'posts' => $this->postInterface->filter($filters, ['category', 'user']),
             'filters' => $filters,
             'categories' => $this->categoryInterface->all(),
         ]);
@@ -76,7 +76,7 @@ class PostController extends Controller
     {
         $data = $request->all();
         if (isset($data['featured_image'])) {
-            $data['featured_image'] = $data['featured_image']->store('featured_images', 'public');
+            $data['featured_image'] = $request->file('featured_image')->store('featured_images', 'public');
         }
         $data['user_id'] = auth()->user()->id;
         $this->postInterface->create($data);
