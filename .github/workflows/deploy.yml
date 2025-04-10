@@ -124,13 +124,8 @@ jobs:
       #   run: npx tsc --noEmit
       - name: Build Frontend Assets
         run: npm run build
-      - name: Check Artifact Path
-        run: |
-          if [ ! -d public ]; then
-            echo "Error: Artifact path 'public/' does not exist."
-            exit 1
-          fi
-          ls -la public
+      - name: Debug – List public folder
+        run: ls -la public/
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
