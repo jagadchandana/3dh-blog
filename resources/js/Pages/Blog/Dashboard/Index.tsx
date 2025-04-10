@@ -21,7 +21,13 @@ export default function Dashboard({ postCount }:any) {
                                 Here you can manage your blog posts, view analytics, and customize your settings.
                             </p>
                             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <div className="p-4 bg-blue-100 rounded-lg shadow">
+                                <div className="p-4 bg-blue-100 rounded-lg shadow relative">
+                                    <a
+                                        href={route('posts.index')}
+                                        className="absolute top-4 right-4 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700"
+                                    >
+                                        View My Posts
+                                    </a>
                                     <h2 className="text-lg font-semibold text-blue-800">Total Posts</h2>
                                     <p className="mt-1 text-2xl font-bold text-blue-900">{postCount}</p>
                                 </div>

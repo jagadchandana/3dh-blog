@@ -30,6 +30,14 @@ export default function Authenticated({
                             </div>
 
                             <div className="flex space-x-1">
+                                <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                    <NavLink
+                                        href={route('home')}
+                                        active={route().current('home')}
+                                    >
+                                        Home
+                                    </NavLink>
+                                </div>
                                {user && <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                     <NavLink
                                         href={route('dashboard')}
@@ -38,14 +46,14 @@ export default function Authenticated({
                                         Dashboard
                                     </NavLink>
                                 </div>}
-                                <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                {user && <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                     <NavLink
                                         href={route('posts.index')}
                                         active={!!route().current()?.includes('posts')}
                                     >
                                         Posts
                                     </NavLink>
-                                </div>
+                                </div>}
                                {user?.role == 'admin' && <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                     <NavLink
                                         href={route('categories.index')}
@@ -54,6 +62,14 @@ export default function Authenticated({
                                         Categories
                                     </NavLink>
                                 </div>}
+                                <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                    <NavLink
+                                        href={"#"}
+                                        active={false}
+                                    >
+                                        About Us
+                                    </NavLink>
+                                </div>
                             </div>
                         </div>
 

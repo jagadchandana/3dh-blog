@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 // home page
-Route::get('/', [PostController::class, 'index'])->name('home');
+Route::prefix('/')->controller(PostController::class)->group(
+    function () {
+        Route::get('/',  'index')->name('home');
+        Route::get('/{slug}',  'show')->name('home.show');
+
+    });
 
 Route::middleware('auth')->group(
     function () {

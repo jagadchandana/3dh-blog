@@ -79,7 +79,7 @@ export default function Index({ posts, filters, categories }:any) {
                                 Welcome to our blog! Explore insightful articles, tips, and stories to inspire and inform your journey.
                             </p>
                         </div>
-                        <div className="p-6">
+                        <div className="px-6">
                             <div>
                                 <h2 className="text-lg font-semibold">Search</h2>
                                 <SearchInput

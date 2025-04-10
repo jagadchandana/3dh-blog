@@ -30,10 +30,21 @@ class PostController extends Controller
         $filters['rowPerPage'] = $filters['rowPerPage'] ?? 1;
         $filters['category'] = $filters['category'] ?? null;
         $filters['writer'] = false;
-        return Inertia::render('Blog/Home/Index', [
+        return Inertia::render('Blog/Home/All/Index', [
             'posts' => $this->postInterface->filter($filters, ['category']),
             'filters' => $filters,
             'categories' => $this->categoryInterface->all(),
+        ]);
+    }
+
+    public function show(string $slug)
+    {
+        $post = $this->postInterface->findByColumn(['slug' => $slug], ['*'], ['category', 'user']);
+        if (!$post) {
+            return redirect()->route('posts.index')->with('error', 'Post not found');
+        }
+        return Inertia::render('Blog/Home/Show/Index', [
+            'post' => $post,
         ]);
     }
 

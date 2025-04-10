@@ -31,7 +31,7 @@ class Post extends Model
      */
     public function getFeaturedImageUrlAttribute()
     {
-        return Storage::url($this->featured_image);
+        return asset('storage/' . $this->featured_image);
         // return $this->featured_image ? asset('storage/' . $this->featured_image) : null;
     }
 
@@ -82,7 +82,7 @@ class Post extends Model
         }
         if (isset($filters['writer']) && $filters['writer']) {
             $query->whereHas('user', function ($query) use ($filters) {
-                $query->where('id', $filters['writer']);
+                $query->where('id', auth()->user()->id);
             });
         }
     }
