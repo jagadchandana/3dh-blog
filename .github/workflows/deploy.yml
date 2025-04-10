@@ -219,7 +219,9 @@ jobs:
             echo "Build failed"
             exit 1
           fi
-
+      - name: Set Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+        
       - name: Run Database Migrations
         run: php artisan migrate --force --verbose
 
