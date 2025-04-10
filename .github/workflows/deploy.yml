@@ -71,7 +71,7 @@ jobs:
           username: blog-jagad@3dh.blog.corelogic.cloud
           password: blog@1qaz2wsx
           server-dir: /3dh.blog.corelogic.cloud/
-          timeout: 800
+          timeout: 18000000
 
 # name: Continuous Integration and Deployment
 
@@ -137,10 +137,10 @@ jobs:
 #         with:
 #           name: dist
 #           path: dist/
-#       - name: Deploy to Server
-#         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-#         with:
-#           server: ${{ secrets.FTP_SERVER }}
-#           username: ${{ secrets.FTP_USERNAME }}
-#           password: ${{ secrets.FTP_PASSWORD }}
-#           server-dir: /
+      # - name: Deploy to Server
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      #   with:
+      #     server: ${{ secrets.FTP_SERVER }}
+      #     username: ${{ secrets.FTP_USERNAME }}
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     server-dir: /
