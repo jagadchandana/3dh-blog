@@ -67,7 +67,7 @@ jobs:
       - name: Deploy to Server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.3
         with:
-          server: ftp.corelogic.cloud
+          server: premium304.web-hosting.com
           username: blog-jagad@3dh.blog.corelogic.cloud
           password: blog@1qaz2wsx
           server-dir: /3dh.blog.corelogic.cloud/
