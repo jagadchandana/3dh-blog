@@ -163,7 +163,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: rootpassword
           MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
           MYSQL_USER: ${{ secrets.MYSQL_USER }}
-          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
@@ -192,8 +192,8 @@ jobs:
         run: |
           sed -i "s/DB_HOST=.*/DB_HOST=127.0.0.1/" .env
           sed -i "s/DB_PORT=.*/DB_PORT=3306/" .env
-          sed -i "s/DB_DATABASE=.*/DB_DATABASE=${{ secrets.MYSQL_DATABASE }}/" .env
-          sed -i "s/DB_USERNAME=.*/DB_USERNAME=${{ secrets.MYSQL_USER }}/" .env
+          sed -i "s/DB_DATABASE=.*/DB_DATABASE=${{ secrets.DB_DATABASE }}/" .env
+          sed -i "s/DB_USERNAME=.*/DB_USERNAME=${{ secrets.DB_USER }}/" .env
           sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=${{ secrets.MYSQL_PASSWORD }}/" .env
           sed -i "s/APP_ENV=.*/APP_ENV=production/" .env
           sed -i "s/APP_DEBUG=.*/APP_DEBUG=true/" .env
@@ -220,11 +220,11 @@ jobs:
             exit 1
           fi
 
-      # - name: Run Database Migrations
-      #   run: php artisan migrate --force --verbose
+      - name: Run Database Migrations
+        run: php artisan migrate --force --verbose
 
-      # - name: Run Database Seeder
-      #   run: php artisan db:seed --force
+      - name: Run Database Seeder
+        run: php artisan db:seed --force
 
       - name: Create Storage Link
         run: php artisan storage:link
