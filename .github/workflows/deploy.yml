@@ -199,10 +199,9 @@ jobs:
           sed -i "s/APP_DEBUG=.*/APP_DEBUG=true/" .env
 
       - name: Install Composer Dependencies
-        run:
-          composer install
-
-          # tar -czvf vendor.tar.gz vendor/
+        run: |
+          composer install --no-interaction --prefer-dist --optimize-autoloader
+          tar -czvf vendor.tar.gz vendor/
 
       - name: Generate APP_KEY if missing
         run: |
@@ -279,3 +278,4 @@ jobs:
             **/tests/**
             **/public/build/**
             **/resources/js/**
+            **/vendor/**
