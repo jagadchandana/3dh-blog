@@ -130,7 +130,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dist
-          path: public/
+          path: dist/
       - name: Deploy to Server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
