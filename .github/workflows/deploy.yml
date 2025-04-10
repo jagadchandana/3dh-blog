@@ -70,9 +70,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /3dh.blog.corelogic.cloud
+          server-dir: /3dh.blog.corelogic.cloud/
           timeout: 600
-          passive: true
 
 # name: Continuous Integration and Deployment
 
