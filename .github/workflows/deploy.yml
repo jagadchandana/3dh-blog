@@ -69,7 +69,7 @@ jobs:
         with:
           server: ftp.corelogic.cloud
           username: blog-jagad@3dh.blog.corelogic.cloud
-          password: ${{ secrets.FTP_PASSWORD }}
+          password: blog@1qaz2wsx
           server-dir: /3dh.blog.corelogic.cloud/
           timeout: 800
 
