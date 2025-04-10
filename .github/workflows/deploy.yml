@@ -72,6 +72,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /
           timeout: 300
+          passive: true
 
 # name: Continuous Integration and Deployment
 
