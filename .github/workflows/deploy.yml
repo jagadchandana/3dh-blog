@@ -65,7 +65,7 @@ jobs:
       #     ping -c 4 ftp.corelogic.cloud
       #     telnet ftp.corelogic.cloud 21
       - name: Deploy to Server
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.3
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
