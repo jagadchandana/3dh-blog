@@ -195,6 +195,7 @@ jobs:
           sed -i "s/DB_DATABASE=.*/DB_DATABASE=${{ secrets.DB_DATABASE }}/" .env
           sed -i "s/DB_USERNAME=.*/DB_USERNAME=${{ secrets.DB_USER }}/" .env
           sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=${{ secrets.DB_PASSWORD }}/" .env
+          sed -i "s/APP_URL=.*/APP_URL=https://3dh.blog.corelogic.cloud/" .env
           sed -i "s/APP_ENV=.*/APP_ENV=production/" .env
           sed -i "s/APP_DEBUG=.*/APP_DEBUG=true/" .env
 
