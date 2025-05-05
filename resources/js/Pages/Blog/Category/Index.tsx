@@ -132,6 +132,7 @@ export default function Index({ categories, filters }: any) {
                 setShow={setShow}
                 type={type}
             />}
+            {/* //test */}
         </AuthenticatedLayout>
     );
 };
